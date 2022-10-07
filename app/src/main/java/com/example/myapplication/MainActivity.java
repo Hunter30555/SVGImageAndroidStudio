@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Creates the web view and enables javascript to be used to process the SVG file
+        // Creates the web view and enables javascript to process the SVG file
         web = findViewById(R.id.webview1);
         web.getSettings().setJavaScriptEnabled(true);
         web.addJavascriptInterface(new WebAppInterface(), "Android");
@@ -57,11 +57,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //Loads the SVG file
+    //Loads the SVG file by using a bufferedReader
     private String loadSvg() {
         try {
             // Reads the SVG file by reading each line individually
-            BufferedReader input = new BufferedReader(new InputStreamReader( getAssets().open("HumanMapTest3.svg")));
+            BufferedReader input = new BufferedReader(new InputStreamReader( getAssets().open("HumanMapTest3.svg")));//getAssets pulls files from /main/assets/
             StringBuffer buffer = new StringBuffer();
             String s = null;
             while ((s = input.readLine()) != null) {
